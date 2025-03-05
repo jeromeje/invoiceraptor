@@ -20,7 +20,6 @@ export function InvoicePreview({ invoice, className }: InvoicePreviewProps) {
   const componentRef = useRef<HTMLDivElement>(null);
   
   const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
     documentTitle: `Invoice-${invoice.invoiceNumber}`,
     onAfterPrint: () => {
       toast({
@@ -28,6 +27,8 @@ export function InvoicePreview({ invoice, className }: InvoicePreviewProps) {
         description: "Your invoice has been sent to your printer.",
       });
     },
+    // The content function is what gets printed
+    contentRef: componentRef,
   });
 
   const handleDownload = () => {
@@ -58,7 +59,7 @@ export function InvoicePreview({ invoice, className }: InvoicePreviewProps) {
             variant="outline" 
             size="sm" 
             className="flex items-center gap-1"
-            onClick={handlePrint}
+            onClick={() => handlePrint()}
           >
             <Printer size={16} />
             <span className="hidden sm:inline">Print</span>

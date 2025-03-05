@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -11,9 +10,10 @@ interface LineItemProps {
   onChange: (updatedItem: LineItemData) => void;
   onRemove: () => void;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export function LineItem({ item, onChange, onRemove, className }: LineItemProps) {
+export function LineItem({ item, onChange, onRemove, className, style }: LineItemProps) {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     field: keyof LineItemData
@@ -44,7 +44,7 @@ export function LineItem({ item, onChange, onRemove, className }: LineItemProps)
   };
 
   return (
-    <div className={cn("grid grid-cols-12 gap-2 items-center", className)}>
+    <div style={style} className={cn("grid grid-cols-12 gap-2 items-center", className)}>
       <div className="col-span-5 sm:col-span-6">
         <Input
           placeholder="Description"

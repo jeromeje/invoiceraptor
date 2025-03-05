@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { InvoiceForm } from "@/components/invoice/InvoiceForm";
@@ -7,7 +6,7 @@ import { InvoiceData, emptyInvoice } from "@/lib/invoice";
 import { Navbar } from "@/components/layout/Navbar";
 import { PageTransition } from "@/components/shared/PageTransition";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Desktop, Smartphone } from "lucide-react";
+import { Monitor, Smartphone } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function Invoice() {
@@ -41,7 +40,7 @@ export default function Invoice() {
             <div className="flex justify-between items-center mb-6">
               <TabsList className="grid w-[400px] grid-cols-2">
                 <TabsTrigger value="edit" className="flex items-center gap-2">
-                  <Desktop size={16} />
+                  <Monitor size={16} />
                   <span>Edit</span>
                 </TabsTrigger>
                 <TabsTrigger value="preview" className="flex items-center gap-2">

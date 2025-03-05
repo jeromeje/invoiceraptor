@@ -16,24 +16,23 @@ const intensityMap = {
   heavy: "bg-background/70 backdrop-blur-lg",
 };
 
-export function GlassContainer({
-  intensity = "medium",
-  border = true,
-  className,
-  children,
-  ...props
-}: GlassContainerProps) {
-  return (
-    <div
-      className={cn(
-        intensityMap[intensity],
-        border && "border border-border/30",
-        "rounded-lg shadow-sm transition-all duration-200",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-}
+export const GlassContainer = React.forwardRef<HTMLDivElement, GlassContainerProps>(
+  ({ intensity = "medium", border = true, className, children, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          intensityMap[intensity],
+          border && "border border-border/30",
+          "rounded-lg shadow-sm transition-all duration-200",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  }
+);
+
+GlassContainer.displayName = "GlassContainer";
